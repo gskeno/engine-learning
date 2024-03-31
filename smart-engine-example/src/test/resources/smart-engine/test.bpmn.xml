@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:smart="http://smartengine.org/schema/process" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" targetNamespace="Examples">
+
+    <process id="basicTest" version="1.0.0">
+
+        <startEvent id="theStart">
+        </startEvent>
+
+        <serviceTask id="createOrderTask" name="createOrderTask"
+                     smart:class="org.gskeno.smartengine.CreateOrderActivity">
+        </serviceTask>
+
+        <serviceTask id="payOrderTask" name="payOrderTask"
+                     smart:class="org.gskeno.smartengine.PayOrderActivity">
+        </serviceTask>
+
+        <endEvent id="theEnd"/>
+
+
+        <sequenceFlow id="flow1" sourceRef="theStart" targetRef="createOrderTask"/>
+
+        <sequenceFlow id="flow2" sourceRef="createOrderTask" targetRef="payOrderTask"/>
+
+        <sequenceFlow id="flow3" sourceRef="payOrderTask" targetRef="theEnd"/>
+    </process>
+
+</definitions>
